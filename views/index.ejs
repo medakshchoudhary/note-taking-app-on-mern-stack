@@ -9,23 +9,24 @@
 <body>
     <div class="w-full min-h-screen bg-zinc-900">
         <div class="form p-10 text-white">
-            <form action="post">
-                <input class="py-2 px-5 outline-none title block w-full rounded-md bg-zinc-800" type="text" placeholder="Title goes here">
-                <textarea class="py-2 px-5 outline-none resize-none mt-2 rounded-md description block w-full bg-zinc-800" type="text" placeholder="Description goes here"></textarea>
-                <input class="mt-2 bg-blue-600 rounded-md py-1 px-2" type="submit" value="Create Task">
+            <form action="/create" method="post">
+                <input class="py-2 px-5 outline-none block w-full rounded-md bg-zinc-800" type="text" placeholder="Title goes here" name="title">
+                <textarea class="py-2 px-5 outline-none resize-none mt-2 rounded-md block w-full bg-zinc-800" type="text" placeholder="Description goes here" name="description"></textarea>
+                <input class="mt-2 bg-blue-600 text-sm rounded-md py-1 px-2" type="submit" value="Create Task">
             </form>
         </div>
         <div class="tasks flex gap-3 flex-wrap p-10">
-            <div class="task rounded-md bg-zinc-800 w-72 px-5 py-2 ">
-                <h1 class="text-3xl tracking-tighter text-white">Some task goes here</h1>
-                <a class="text-blue-500 mt-3 block" href="">Read More.</a>
-                <!-- why we did block here? -->
-            </div>
-            <div class="task rounded-md bg-zinc-800 w-72 px-5 py-2 ">
-                <h1 class="text-3xl tracking-tighter text-white">Some task goes here</h1>
-                <a class="text-blue-500 mt-3 block" href="">Read More.</a>
-                <!-- why we did block here? -->
-            </div>
+            <% if(files.length>0) { %>
+                <% files.forEach(function(val){ %>
+                    <div class="task rounded-md bg-zinc-800 min-w-72 px-5 py-2 ">
+                        <h1 class="text-3xl tracking-tighter text-white"><%= val %></h1>
+                        <a class="text-blue-500 mt-3 block" href="">Read More.</a>
+                        <!-- why we did block here? -->
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3 class="text-zinc-600">no tasks yet</h3>
+            <% } %>
         </div>
     </div>
 </body>
