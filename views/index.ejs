@@ -20,7 +20,7 @@
                 <% files.forEach(function(val){ %>
                     <div class="task rounded-md bg-zinc-800 min-w-72 px-5 py-2 ">
                         <h1 class="text-3xl tracking-tighter text-white"><%= val %></h1>
-                        <a class="text-blue-500 mt-3 block" href="">Read More.</a>
+                        <a class="text-blue-500 mt-3 block" href="/file/<%= val %>">Read More.</a>
                         <!-- why we did block here? -->
                     </div>
                 <% }) %>
