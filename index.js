@@ -27,6 +27,17 @@ app.get("/file/:filename", function(req,res){
     });
 })
 
+app.get("/edit/:filename", function(req,res){
+    res.render("edit",{filename: req.params.filename});
+})
+
+app.post("/edit", function(req,res){
+    fs.rename(`./files/${req.body.previousName}`,`./files/${req.body.newName}`,function(err){
+        if (err) console.log("something went wrong");
+        else res.redirect("/");
+    })
+})
+
 
 app.listen(3000,function(req,res){
     console.log("server is working");

@@ -19,9 +19,11 @@
             <% if(files.length>0) { %>
                 <% files.forEach(function(val){ %>
                     <div class="task rounded-md bg-zinc-800 min-w-72 px-5 py-2 ">
-                        <h1 class="text-3xl tracking-tighter text-white"><%= val %></h1>
-                        <a class="text-blue-500 mt-3 block" href="/file/<%= val %>">Read More.</a>
-                        <!-- why we did block here? -->
+                        <h1 class="text-3xl mb-5 tracking-tighter text-white"><%= val %></h1>
+                        <div class="flex justify-between">
+                            <a class="text-blue-500" href="/file/<%= val %>">Read More.</a>
+                            <a class="text-zinc-500" href="/edit/<%= val %>">Edit Filename</a>
+                        </div>
                     </div>
                 <% }) %>
             <% } else { %>
